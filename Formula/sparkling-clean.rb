@@ -34,10 +34,12 @@ class SparklingClean < Formula
       Background watchdog (checks every 2h, notifies only on a level change):
         sparkling-clean install-guard
 
-      Menu bar, via SwiftBar:
+      Menu bar, via SwiftBar (quote the path; create the folder first):
         brew install --cask swiftbar
-        ln -s #{opt_libexec}/extra/swiftbar/sparkling-clean.10m.sh \
-              ~/Library/Application\ Support/SwiftBar/
+        mkdir -p "$HOME/Library/Application Support/SwiftBar"
+        ln -sf "#{opt_libexec}/extra/swiftbar/sparkling-clean.10m.sh" \
+               "$HOME/Library/Application Support/SwiftBar/"
+        open -a SwiftBar
     EOS
   end
 
