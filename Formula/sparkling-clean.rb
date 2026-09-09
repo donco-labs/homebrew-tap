@@ -1,8 +1,8 @@
 class SparklingClean < Formula
-  desc "macOS disk triage toolkit: diagnose disk-pressure freezes and reclaim space safely"
+  desc "macOS disk triage: diagnose disk-pressure freezes and reclaim space safely"
   homepage "https://github.com/donco-labs/sparkling-clean"
-  url "https://github.com/donco-labs/sparkling-clean/archive/refs/tags/v0.3.2.tar.gz"
-  sha256 "182169872ae7046fdbdfb2e0aeb975f8fc3d5adbda4aa12df6b61dac8322819d"
+  url "https://github.com/donco-labs/sparkling-clean/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "d6c425a5477d71bb77d37c774b1bf51d09a10f4b8d0ef6bb68f80b28a4147541"
   license "MIT"
   head "https://github.com/donco-labs/sparkling-clean.git", branch: "main"
 
@@ -36,10 +36,15 @@ class SparklingClean < Formula
 
       Menu bar, via SwiftBar (quote the path; create the folder first):
         brew install --cask swiftbar
-        mkdir -p "$HOME/Library/Application Support/SwiftBar"
+        mkdir -p "$HOME/Library/Application Support/SwiftBarPlugins"
         ln -sf "#{opt_libexec}/extra/swiftbar/sparkling-clean.10m.sh" \
-               "$HOME/Library/Application Support/SwiftBar/"
+               "$HOME/Library/Application Support/SwiftBarPlugins/"
         open -a SwiftBar
+
+      Point SwiftBar at that folder on first launch. Do NOT use
+      ~/Library/Application Support/SwiftBar -- that is SwiftBar's own state
+      directory, and it loads its diagnostics file there as a second, broken
+      plugin showing "?" in the menu bar.
     EOS
   end
 
