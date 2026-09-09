@@ -1,8 +1,8 @@
 class SparklingClean < Formula
   desc "macOS disk triage: diagnose disk-pressure freezes and reclaim space safely"
   homepage "https://github.com/donco-labs/sparkling-clean"
-  url "https://github.com/donco-labs/sparkling-clean/archive/refs/tags/v0.4.3.tar.gz"
-  sha256 "b7cc66fad6801fe72b92937b5de7fec355755735d8bae52be36e8cdc63074a0a"
+  url "https://github.com/donco-labs/sparkling-clean/archive/refs/tags/v0.4.4.tar.gz"
+  sha256 "d24b213733e8fb54b47862487b1e7747113483a2a2933751fac64e3b59ba49a6"
   license "MIT"
   head "https://github.com/donco-labs/sparkling-clean.git", branch: "main"
 
