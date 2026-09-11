@@ -1,8 +1,8 @@
 class SparklingClean < Formula
   desc "macOS disk triage: diagnose disk-pressure freezes and reclaim space safely"
   homepage "https://github.com/donco-labs/sparkling-clean"
-  url "https://github.com/donco-labs/sparkling-clean/archive/refs/tags/v0.5.3.tar.gz"
-  sha256 "1cb70aab841d32a728ee590d5dc96abd59059b30818a195670c0034089893de1"
+  url "https://github.com/donco-labs/sparkling-clean/archive/refs/tags/v0.6.0.tar.gz"
+  sha256 "25325db803de67046fab7fe7453cbeff16500486b7dd918fba4af82fa46ec02a"
   license "MIT"
   head "https://github.com/donco-labs/sparkling-clean.git", branch: "main"
 
@@ -53,10 +53,11 @@ class SparklingClean < Formula
     assert_match "macOS disk triage", shell_output("#{bin}/sparkling-clean --help")
 
     # The guard must emit parseable JSON and a valid level. Exit is 0/1/2 by
-    # design, so tolerate non-zero.
+    # design (OK/WARN/CRIT) and which one you get depends on the machine -- in
+    # the test sandbox the volume reads 0 B free, so it is CRIT and exits 2.
+    # Take the output whatever the code; the assertions below judge the content.
     require "json"
-    out = shell_output("#{bin}/sparkling-clean check --json", 1)
-    out = shell_output("#{bin}/sparkling-clean check --json") if out.strip.empty?
+    out = shell_output("#{bin}/sparkling-clean check --json || true")
     j = JSON.parse(out)
     assert_includes %w[OK WARN CRIT], j["level"]
     assert !j["subject"].to_s.empty?, "guard reported no subject"
