@@ -1,8 +1,8 @@
 class Plimsoll < Formula
   desc "macOS disk triage: diagnose disk-pressure freezes and reclaim space safely"
   homepage "https://github.com/donco-labs/plimsoll"
-  url "https://github.com/donco-labs/plimsoll/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "219ccfb98e7ec4464cbd05c288d5eef1a913a988da4d63e76e37581bd56b5f26"
+  url "https://github.com/donco-labs/plimsoll/archive/refs/tags/v0.8.1.tar.gz"
+  sha256 "cd012157e67c05fec1219f38f90e2bf80c830cb32cca9e34304b20656d0a2a96"
   license "MIT"
   head "https://github.com/donco-labs/plimsoll.git", branch: "main"
 
