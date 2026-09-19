@@ -21,12 +21,20 @@ every formula this tap ever gains, including ones added later.
 
 ## Upgrading from sparkling-clean
 
-This tap's formula was called `sparkling-clean` through v0.7.1. `brew upgrade`
-migrates the install by itself; the toolkit's own artifacts move when you run:
+This tap's formula was called `sparkling-clean` through v0.7.1. Trust is keyed to
+the formula *name*, so having trusted `sparkling-clean` is not enough — `brew
+upgrade` will stop with `Refusing to load formula donco-labs/tap/plimsoll from
+untrusted tap` until you trust the new name:
 
 ```bash
+brew update
+brew trust --formula donco-labs/tap/plimsoll
+brew upgrade
 plimsoll install-guard
 ```
+
+`formula_renames.json` then migrates the install rather than stranding it. The
+last line moves the toolkit's own artifacts.
 
 That unloads the old launchd guard before the new one loads — two guards on one
 machine notify twice and split their de-dup state — and moves the state
